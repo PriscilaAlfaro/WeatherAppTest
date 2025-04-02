@@ -11,36 +11,15 @@ const SearchBar = ({ onSearch, isMobile }) => {
   };
   return (
     <FlexboxGrid justify="center" 
-      style={{ 
-      marginBottom: "2rem", 
-      marginTop: "1rem", 
-      display: isMobile ? "inline-grid" : "flex",
-      heigh: "104px",
-      justifyItems: "center",
-      alignItems: "center",
-       }}>
+      style={styles.flexBoxGrid(isMobile)}>
         <Input 
         value={newCity} 
         onChange={(value) => setNewCity(value)}
         placeholder="Enter a city..." 
         onKeyDown={handleEvent}
-        style={{ 
-          borderRadius: "29px", 
-          marginBottom: isMobile ? "16px" : "0", 
-          height: "44px",
-          width: "302px",
-          padding: "0",
-          border: "0",
-          paddingLeft: "15px",
-          }} />
+        style={styles.input(isMobile)} />
         <Button appearance="primary" onClick={handleEvent} 
-        style={{
-          borderRadius: "29px", 
-          backgroundColor: "#1090DB",
-          height: "44px",
-          width: isMobile ? "302px" : "188px",
-          marginLeft: isMobile ? 0 : "15px"
-          }}>
+        style={styles.button(isMobile)}>
             Search
         </Button>
     </FlexboxGrid>
@@ -48,3 +27,30 @@ const SearchBar = ({ onSearch, isMobile }) => {
 };
 
 export default SearchBar;
+
+const styles = {
+  flexBoxGrid: (isMobile)=>({ 
+    marginBottom: "2rem", 
+    marginTop: "1rem", 
+    display: isMobile ? "inline-grid" : "flex",
+    heigh: "104px",
+    justifyItems: "center",
+    alignItems: "center",
+  }),
+  input: (isMobile)=>({  
+    borderRadius: "29px", 
+    marginBottom: isMobile ? "16px" : "0", 
+    height: "44px",
+    width: "302px",
+    padding: "0",
+    border: "0",
+    paddingLeft: "15px",
+  }),
+  button: (isMobile)=>({ 
+    borderRadius: "29px", 
+    backgroundColor: "#1090DB",
+    height: "44px",
+    width: isMobile ? "302px" : "188px",
+    marginLeft: isMobile ? 0 : "15px"
+  }) 
+}

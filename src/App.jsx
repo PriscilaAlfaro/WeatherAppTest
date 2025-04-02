@@ -21,7 +21,6 @@ function App() {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
-    // return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -46,7 +45,8 @@ function App() {
           });
         }
       }
-      // show something if wasn't able to fetch the data
+      // show something if wasn't able to fetch the data? 
+      //For now it keeps the latest city
   };
 
   
@@ -55,18 +55,8 @@ function App() {
   };
 
   return (
-    <Container style={{
-      display: "flex", 
-      flexDirection: "column",
-      minWidth: "320px",
-      minHeight: "100vh",
-      color: "#FFFFFF",
-      marginTop:"30px"
-      }}>
-        <Header style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"}}>
+    <Container style={sytles.container}>
+        <Header style={sytles.header}>
           <SearchBar onSearch={handleSearch} isMobile={isMobile}/>
         </Header>
         <Content>
@@ -82,3 +72,19 @@ function App() {
 }
 
 export default App;
+
+const sytles = {
+  container: {
+  display: "flex", 
+  flexDirection: "column",
+  minWidth: "320px",
+  minHeight: "100vh",
+  color: "#FFFFFF",
+  marginTop:"30px"
+  },
+  header: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+}
